@@ -448,40 +448,121 @@ const MEMBERS = [
   {id:'mem_carlos',name:'Carlos Yanez',email:'carlos@bancaverse.com',city:'Austin, TX',company:'Bancaverse',title:'Founder & CEO',
     role:'CONVENER · LRE',specialty:['Lender','Investor','Multifamily'],type:'Lender',
     bio:'Founder of Bancaverse — capital markets and business-purpose mortgage brokerage. Convener of LRE Austin. Originated $300M+ across business-purpose loans in last 24 months.',
-    founding:true,photo:'https://i.pravatar.cc/600?img=60'},
+    founding:true,photo:'https://i.pravatar.cc/600?img=60',website:'https://bancaverse.com',linkedin:'https://linkedin.com/in/carlosyanez',twitter:'@bancaverse',instagram:'@bancaverse'},
   {id:'mem_sofia',name:'Sofia Ramirez',email:'sofia@example.com',city:'East Austin, TX',company:'Casa Capital Group',title:'Managing Partner',
     role:'OPERATOR · MULTIFAMILY',specialty:['Multifamily','Value-add'],type:'Operator',
     bio:'Multifamily syndicator focused on workforce housing across East Austin and Round Rock. $120M AUM across 11 properties.',
-    founding:true,photo:'https://i.pravatar.cc/600?img=47'},
+    founding:true,photo:'https://i.pravatar.cc/600?img=47',website:'https://casacapital.example',linkedin:'https://linkedin.com/in/sofiaramirez',twitter:'@sofiaRE_atx',instagram:'@casa.capital'},
   {id:'mem_diego',name:'Diego Alvarez',email:'diego@example.com',city:'Cedar Park, TX',company:'Alvarez Realty',title:'Principal Broker',
     role:'BROKER · INDUSTRIAL',specialty:['Commercial','Industrial'],type:'Broker',
     bio:'Industrial and flex-space specialist along the I-35 / 183 corridor. Closes $80M+ annually across Austin metro.',
-    founding:true,photo:'https://i.pravatar.cc/600?img=12'},
+    founding:true,photo:'https://i.pravatar.cc/600?img=12',website:'https://alvarezrealty.example',linkedin:'https://linkedin.com/in/diegoalvarez',twitter:'@diego_atx',instagram:'@alvarez.industrial'},
   {id:'mem_lucia',name:'Lucia Mendoza',email:'lucia@example.com',city:'Downtown Austin, TX',company:'Mendoza Family Office',title:'Head of Real Estate',
     role:'INVESTOR · FAMILY OFFICE',specialty:['Investor','Mixed-use'],type:'Investor',
     bio:'Allocates family office capital across Austin mixed-use and hospitality. Check size $1–$10M. 22 active GP relationships.',
-    founding:true,photo:'https://i.pravatar.cc/600?img=49'},
+    founding:true,photo:'https://i.pravatar.cc/600?img=49',linkedin:'https://linkedin.com/in/luciamendoza',twitter:'@lucia_RE'},
   {id:'mem_mateo',name:'Mateo Torres',email:'mateo@example.com',city:'East Austin, TX',company:'Torres + Co Development',title:'Founder',
     role:'OPERATOR · DEVELOPMENT',specialty:['Development','Mixed-use'],type:'Operator',
     bio:'Ground-up developer. Currently building a 60-unit mixed-use in Mueller and a warehouse-to-loft conversion on Springdale.',
-    founding:true,photo:'https://i.pravatar.cc/600?img=33'},
+    founding:true,photo:'https://i.pravatar.cc/600?img=33',website:'https://torresco.example',linkedin:'https://linkedin.com/in/mateotorres',twitter:'@mateotorres_dev',instagram:'@torresco.dev'},
   {id:'mem_ana',name:'Ana Gutierrez',email:'ana@example.com',city:'Westlake, TX',company:'Gutierrez Capital',title:'Principal',
     role:'LENDER · BRIDGE',specialty:['Lender','Bridge'],type:'Lender',
     bio:'Private lender. Bridge and hard-money on $500K–$10M deals across Travis, Williamson, Hays counties.',
-    founding:true,photo:'https://i.pravatar.cc/600?img=25'},
+    founding:true,photo:'https://i.pravatar.cc/600?img=25',website:'https://gutierrezcapital.example',linkedin:'https://linkedin.com/in/anagutierrez',twitter:'@ana_lends'},
   {id:'mem_javier',name:'Javier Fonseca',email:'javier@example.com',city:'Domain, Austin, TX',company:'Fonseca + Asociados',title:'Managing Director',
     role:'BROKER · COMMERCIAL',specialty:['Commercial','Office'],type:'Broker',
     bio:'CRE office and retail leasing across the Domain and downtown corridors. 18 years in market.',
-    founding:true,photo:'https://i.pravatar.cc/600?img=51'},
+    founding:true,photo:'https://i.pravatar.cc/600?img=51',website:'https://fonseca-asociados.example',linkedin:'https://linkedin.com/in/javierfonseca',twitter:'@javier_CRE',instagram:'@fonseca.cre'},
   {id:'mem_isabella',name:'Isabella Santos',email:'isabella@example.com',city:'South Congress, TX',company:'Santos Hospitality Group',title:'CEO',
     role:'OPERATOR · HOSPITALITY',specialty:['Hotel','Hospitality','Investor'],type:'Operator',
     bio:'Boutique hotel operator with 4 properties along South Congress and East 6th. Hospitality-meets-tech operator.',
-    founding:true,photo:'https://i.pravatar.cc/600?img=44'},
+    founding:true,photo:'https://i.pravatar.cc/600?img=44',website:'https://santoshg.example',linkedin:'https://linkedin.com/in/isabellasantos',twitter:'@bella_hotels',instagram:'@santos.hotels'},
   {id:'mem_rafael',name:'Rafael Cruz',email:'rafael@example.com',city:'Mueller, Austin, TX',company:'Cruz Architecture',title:'Principal Architect',
     role:'ADVISOR · ARCHITECTURE',specialty:['Architect','Design'],type:'Service provider',
     bio:'Award-winning architect for adaptive reuse and mixed-use projects. AIA Austin past president.',
-    founding:false,photo:'https://i.pravatar.cc/600?img=15'}
+    founding:false,photo:'https://i.pravatar.cc/600?img=15',website:'https://cruz.archi',linkedin:'https://linkedin.com/in/rafaelcruz',instagram:'@cruz.architecture'}
 ];
+
+// ============== MEMBER POSTS — deals, construction, speaking, bulletins ==============
+const POSTS = [
+  // Carlos
+  {id:'p_c1',memberId:'mem_carlos',kind:'deal',title:'Bridge debt term sheet template',date:'2026-04-22',body:'Sharing the standardized 12-month bridge term sheet Bancaverse uses for sub-$5M deals. Members can fork and use.',cta:'Request copy'},
+  {id:'p_c2',memberId:'mem_carlos',kind:'speaking',title:'Keynote · PropTech Austin Summit',date:'2026-09-10',meta:'Capital Factory · 6pm',body:'"Capital is local: how Austin Latino-led brokerages are reshaping the borrower-lender relationship." 30 min keynote + Q&A.',cta:'RSVP at proptechatx.com'},
+  {id:'p_c3',memberId:'mem_carlos',kind:'construction',title:'Bancaverse HQ buildout · 5,000sf · Mueller',date:'2026-Q4',meta:'Looking for: GC bids',body:'Open shell to office buildout. Permits in. Need a GC familiar with mid-market commercial finishes. Award by Aug 1.',cta:'Bid the project'},
+  {id:'p_c4',memberId:'mem_carlos',kind:'bulletin',title:'Looking for: industrial broker referrals · Round Rock',date:'2026-05-02',body:'Have a borrower hunting 50-80k sf flex space along the 35/79 split. Refer your top broker — finder fee paid on close.',cta:'Make an intro'},
+  // Sofia
+  {id:'p_s1',memberId:'mem_sofia',kind:'deal',title:'East Austin 24-Unit Value-Add',date:'2026-05-01',meta:'$2.4M LP equity · 16-18% IRR',body:'Class C garden, 1980s vintage off East 12th. $98/sf basis, sub-market rents support $1,650/unit post-reno.',cta:'See deal page'},
+  {id:'p_s2',memberId:'mem_sofia',kind:'construction',title:'Springdale Warehouse → 12 lofts',date:'2026-Q3',meta:'Adaptive reuse',body:'1953 warehouse on Springdale becoming 12 industrial lofts. Open to a JV equity partner at 75/25.',cta:'JV inquiry'},
+  {id:'p_s3',memberId:'mem_sofia',kind:'speaking',title:'ULI Austin · Workforce Housing Panel',date:'2026-06-25',meta:'AT&T Conference Center',body:'Panelist on the "Beyond LIHTC" track. How non-tax-credit operators deliver workforce housing in price-pressured Austin.',cta:'Get tickets'},
+  {id:'p_s4',memberId:'mem_sofia',kind:'bulletin',title:'Hiring: Asset Manager · Casa Capital',date:'2026-04-30',meta:'Full-time · East Austin',body:'8-property portfolio (~$120M AUM). 5+ years multifamily ops. Spanish required.',cta:'Apply / refer'},
+  // Diego
+  {id:'p_d1',memberId:'mem_diego',kind:'deal',title:'40-acre Dripping Springs land play',date:'2026-04-12',meta:'$5.8M equity',body:'40 acres, US-290 frontage. Pre-entitlement land bank with builder LOIs from DRH and Lennar.',cta:'See deal page'},
+  {id:'p_d2',memberId:'mem_diego',kind:'deal',title:'45,000 sf flex · Cedar Park · OFF-MARKET',date:'2026-05-04',meta:'$9.2M · 6.4% cap',body:'Single-tenant flex with national credit on a 6-yr NNN. Sharing only with LRE before listing.',cta:'NDA + OM'},
+  {id:'p_d3',memberId:'mem_diego',kind:'speaking',title:'Podcast guest · ATX Capital Stack',date:'2026-07-08',meta:'Podcast · 45 min',body:'Talking industrial absorption, Samsung-effect on the NW corridor, and why land beats listings in 2026.',cta:'Listen on launch'},
+  {id:'p_d4',memberId:'mem_diego',kind:'bulletin',title:'Recommend: title attorney for industrial',date:'2026-04-28',body:'Looking for a title attorney who actually understands TX industrial easements. Member referrals only.',cta:'DM Diego'},
+  // Lucia
+  {id:'p_l1',memberId:'mem_lucia',kind:'deal',title:'Co-investing $2M into a member-led mixed-use',date:'2026-05-05',meta:'1 LP spot left',body:'Backing one of our operators on a Mueller play. One slot still open at $250K min. Members only.',cta:'Express interest'},
+  {id:'p_l2',memberId:'mem_lucia',kind:'speaking',title:'Family Office Roundtable · Austin Investors Forum',date:'2026-08-19',meta:'Driskill Hotel · invite-only',body:'Moderating "Latino capital, Latino sponsors" — private 30-person roundtable. LRE has 5 reserved seats.',cta:'Reserve seat'},
+  {id:'p_l3',memberId:'mem_lucia',kind:'bulletin',title:'Looking for: tax counsel · 1031 exchange',date:'2026-04-22',body:'Need a CPA + attorney pair experienced with reverse 1031s. Family office volume.',cta:'Refer your team'},
+  {id:'p_l4',memberId:'mem_lucia',kind:'bulletin',title:'Open: $1M-$3M equity allocations Q3',date:'2026-04-15',body:'Allocating Q3 across 2-3 GP-led mixed-use or hospitality deals. 8% pref + promote.',cta:'Pitch a deal'},
+  // Mateo
+  {id:'p_m1',memberId:'mem_mateo',kind:'deal',title:'Mueller 60-unit Mixed-Use · Construction Debt',date:'2026-05-03',meta:'$12M debt + GP-stack',body:'Fully entitled 60-unit residential over 8,000sf retail. Site under contract at $4.2M. TDC ~$22M.',cta:'See deal page'},
+  {id:'p_m2',memberId:'mem_mateo',kind:'construction',title:'Springdale Warehouse Conversion · ground broken',date:'2026-04-18',meta:'Phase 1 · 12 units',body:'Phase 1 underway. Looking for a TX-licensed millwork shop for the lobby and unit interiors.',cta:'Submit shop'},
+  {id:'p_m3',memberId:'mem_mateo',kind:'speaking',title:'AIA Austin · Adaptive Reuse Pro Forma',date:'2026-09-22',meta:'Public · CEU',body:'Hour-long workshop. How to underwrite a warehouse-to-loft conversion that actually pencils.',cta:'Register'},
+  {id:'p_m4',memberId:'mem_mateo',kind:'bulletin',title:'Looking for: capital markets associate',date:'2026-04-29',body:'Hiring an associate to run debt placement for our pipeline. 2-4 yrs RE finance, Spanish a plus.',cta:'Apply'},
+  // Ana
+  {id:'p_a1',memberId:'mem_ana',kind:'deal',title:'Open: $500K-$10M bridge debt allocations',date:'2026-05-06',meta:'9-12% rate · 6-18 mo',body:'Active capital this quarter. SFR portfolios, multi, mixed-use, light value-add. Travis/Williamson/Hays only.',cta:'Submit a deal'},
+  {id:'p_a2',memberId:'mem_ana',kind:'speaking',title:'Texas REIA · Bridge Lending 101',date:'2026-07-15',meta:'Austin · members + guests',body:'How to package a bridge request that actually gets funded. Live underwriting on 2 borrower scenarios.',cta:'RSVP'},
+  {id:'p_a3',memberId:'mem_ana',kind:'bulletin',title:'Recommend: title company in Hays County',date:'2026-04-26',body:'Need a title shop that closes fast in Hays. Two recent escrows took 22 days too long.',cta:'DM Ana'},
+  {id:'p_a4',memberId:'mem_ana',kind:'bulletin',title:'Lender capacity update · Q2',date:'2026-04-10',body:'Currently $14M deployed of $20M cap. Pacing for full deployment by July. Hold quality high — no exceptions.',cta:'Discuss a deal'},
+  // Javier
+  {id:'p_j1',memberId:'mem_javier',kind:'deal',title:'Domain office sublease · 8,400 sf',date:'2026-05-02',meta:'Furnished · $32 NNN',body:'Tech tenant downsizing. Plug-and-play sublease, 36 months remaining. Below market rent.',cta:'Tour the space'},
+  {id:'p_j2',memberId:'mem_javier',kind:'deal',title:'Downtown retail at 2nd & Brazos · $5.4M',date:'2026-04-30',meta:'Stabilized · 6.8% cap',body:'Two-tenant retail box. F&B + service. Long-WALT, NNN. Owner relocating capital.',cta:'OM available'},
+  {id:'p_j3',memberId:'mem_javier',kind:'speaking',title:'CCIM Austin · The Domain in 2027',date:'2026-10-04',meta:'Domain Northside',body:'30-min market read on Domain office, retail, and the new mixed-use deliveries.',cta:'Register'},
+  {id:'p_j4',memberId:'mem_javier',kind:'bulletin',title:'Looking for: Spanish-speaking property manager',date:'2026-04-21',body:'Have a 22,000 sf retail asset that needs PM. Spanish required for tenant base.',cta:'Refer one'},
+  // Isabella
+  {id:'p_i1',memberId:'mem_isabella',kind:'deal',title:'South Congress 38-key Hotel · Refi',date:'2026-05-04',meta:'$8.5M senior debt',body:'Stabilized boutique. Trailing $1.2M NOI. Replacing a maturing $7M loan + $1.5M cash-out.',cta:'See deal page'},
+  {id:'p_i2',memberId:'mem_isabella',kind:'construction',title:'East 6th Hotel #5 · permits filed',date:'2026-Q3 break ground',meta:'24-key boutique',body:'Adaptive reuse on East 6th. Permits filed last week. Pre-construction kickoff with GC mid-June.',cta:'Tour the block'},
+  {id:'p_i3',memberId:'mem_isabella',kind:'speaking',title:'SXSW Hospitality Track · 2027',date:'2027-03-15',meta:'Austin Convention Center',body:'Confirmed for SXSW hospitality track. Talk: "Hyper-local boutique vs. brand."',cta:'Save the date'},
+  {id:'p_i4',memberId:'mem_isabella',kind:'bulletin',title:'Hiring: GM for new East 6th opening',date:'2026-04-25',body:'Opening GM for our 5th property. Boutique hotel ops experience required. Bilingual a strong plus.',cta:'Refer / apply'},
+  // Rafael
+  {id:'p_r1',memberId:'mem_rafael',kind:'speaking',title:'AIA Austin · Designing for el círculo',date:'2026-08-12',meta:'AIA HQ · public',body:"Talk on how Austin's Latino-led developments are shaping a new Texas vernacular.",cta:'RSVP'},
+  {id:'p_r2',memberId:'mem_rafael',kind:'construction',title:'Mueller mixed-use · design lead',date:'2026-Q4 vertical',meta:'60 units + 8,000sf retail',body:"Lead architect on Mateo's Mueller project. Design dev complete. CDs in hand.",cta:'View renderings'},
+  {id:'p_r3',memberId:'mem_rafael',kind:'bulletin',title:'Recommend: structural engineer · adaptive reuse',date:'2026-05-01',body:'Need a structural for two warehouse-to-loft pre-cons. Must have TX seal + reuse experience.',cta:'Refer one'},
+  {id:'p_r4',memberId:'mem_rafael',kind:'bulletin',title:'Available: pro-bono design hours',date:'2026-04-15',body:'Reserving 20 pro-bono hours/quarter for member-referred community projects.',cta:'Apply'}
+];
+
+const KIND_META={
+  deal:{label:'DEAL FLOW',color:'var(--orange)',bg:'rgba(229,86,43,.10)'},
+  construction:{label:'CONSTRUCTION',color:'#8B5E2A',bg:'rgba(139,94,42,.10)'},
+  speaking:{label:'SPEAKING',color:'var(--green)',bg:'rgba(45,95,78,.10)'},
+  bulletin:{label:'BULLETIN',color:'var(--ink)',bg:'rgba(15,24,34,.06)'}
+};
+function postCard(p,m){
+  const k=KIND_META[p.kind]||KIND_META.bulletin;
+  return `
+    <div data-kind="${p.kind}" class="dash-card" style="cursor:default">
+      <div class="body" style="padding:22px">
+        <div style="display:flex;justify-content:space-between;align-items:start;gap:12px">
+          <div class="mono" style="font-size:10px;letter-spacing:.15em;color:${k.color};background:${k.bg};padding:4px 9px;text-transform:uppercase;font-weight:600">${k.label}</div>
+          <div class="mono" style="font-size:11px;color:rgba(15,24,34,.5)">${p.date||''}</div>
+        </div>
+        <h3 style="font-size:20px;margin-top:12px;line-height:1.2">${p.title}</h3>
+        ${p.meta?`<div class="mono" style="font-size:11px;color:var(--orange);margin-top:6px;text-transform:uppercase;letter-spacing:.1em">${p.meta}</div>`:''}
+        <p style="margin-top:10px;font-size:14px;line-height:1.55;color:rgba(15,24,34,.75)">${p.body}</p>
+        ${p.cta?`<div style="margin-top:14px"><a href="mailto:${m.email}?subject=LRE: ${encodeURIComponent(p.title)}" style="font-family:'Inconsolata',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);font-weight:600">${p.cta} →</a></div>`:''}
+      </div>
+    </div>`;
+}
+function filterPosts(memberId,kind,btn){
+  const list=document.getElementById('posts-list-'+memberId);
+  const cards=list.querySelectorAll('[data-kind]');
+  cards.forEach(c=>{c.style.display=(kind==='all'||c.dataset.kind===kind)?'':'none'});
+  const pills=document.getElementById('filter-pills-'+memberId).querySelectorAll('button');
+  pills.forEach(p=>{p.style.background='';p.style.color='';p.style.border=''});
+  btn.style.background='var(--orange)';btn.style.color='#fff';btn.style.border='1px solid var(--orange)';
+}
+
 
 const EVENTS = [
   {id:'evt_dinner',name:'LRE Founding Dinner · East Austin',date:'2026-06-12T19:00:00',
@@ -747,6 +828,14 @@ function renderMembers(){
 function renderMember(id){
   const m=mem(id);if(!m)return go('members');
   const projects=PROJECTS.filter(p=>p.ownerId===id);
+  const posts=POSTS.filter(p=>p.memberId===id);
+  const social=[
+    m.website?{label:'WEBSITE',href:m.website,sub:m.website.replace(/^https?:\/\//,'').replace(/\/$/,'')}:null,
+    m.linkedin?{label:'LINKEDIN',href:m.linkedin,sub:m.linkedin.replace(/^https?:\/\/(www\.)?linkedin\.com\//,'').replace(/\/$/,'')}:null,
+    m.twitter?{label:'TWITTER · X',href:'https://twitter.com/'+m.twitter.replace('@',''),sub:m.twitter}:null,
+    m.instagram?{label:'INSTAGRAM',href:'https://instagram.com/'+m.instagram.replace('@',''),sub:m.instagram}:null,
+    {label:'EMAIL',href:'mailto:'+m.email+'?subject=Hola via LRE',sub:m.email}
+  ].filter(Boolean);
   document.getElementById('page-member').innerHTML=`
     <div class="page-hero">
       <div class="hero-bg">
@@ -767,29 +856,43 @@ function renderMember(id){
             <p style="font-size:22px;line-height:1.45;color:var(--ink);font-weight:400;letter-spacing:-.005em">${m.bio}</p>
             <div style="margin-top:32px">${m.specialty.map(s=>`<span class="pill">${s}</span>`).join('')}</div>
             <div style="margin-top:40px"><a href="mailto:${m.email}?subject=Hola via LRE" class="btn btn-dark">Say hi <span class="arrow"></span></a></div>
+            <div style="margin-top:48px;border-top:1px solid var(--line-light);padding-top:24px">
+              <span class="eyebrow" style="display:block;margin-bottom:14px">// Connect</span>
+              <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px">
+                ${social.map(s=>`
+                  <a href="${s.href}" target="_blank" rel="noopener" style="display:block;padding:12px 14px;background:var(--cream-2);border-left:2px solid var(--orange);text-decoration:none">
+                    <div class="mono" style="font-size:10px;letter-spacing:.18em;color:var(--orange)">${s.label} ↗</div>
+                    <div style="font-size:13px;color:var(--ink);margin-top:4px;word-break:break-all">${s.sub}</div>
+                  </a>`).join('')}
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
-    ${projects.length?`
     <section class="section-light" style="padding:80px 0;background:var(--cream-2)">
       <div class="container">
-        <span class="eyebrow">// Open from ${m.name.split(' ')[0]}</span>
-        <h2 class="h-tight" style="font-size:42px;color:var(--ink);margin-bottom:32px">Deal flow</h2>
-        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:18px">
-          ${projects.map(p=>`
-            <div class="dash-card" onclick="go('project','${p.id}')">
-              <div class="img"><img src="${p.cover}" alt=""></div>
-              <div class="body">
-                <div class="meta">${p.projectType} · ${p.propertyType}</div>
-                <h3>${p.name}</h3>
-                <p>${p.pitchShort}</p>
-              </div>
-            </div>`).join('')}
+        <div style="display:flex;justify-content:space-between;align-items:end;margin-bottom:32px;flex-wrap:wrap;gap:14px">
+          <div>
+            <span class="eyebrow">// ${m.name.split(' ')[0]}'s feed</span>
+            <h2 class="h-tight" style="font-size:42px;color:var(--ink);margin-top:8px">Posts &amp; bulletins</h2>
+            <p class="muted" style="margin-top:6px">${posts.length} posts · deals, construction, speaking, asks</p>
+          </div>
+          <div id="filter-pills-${m.id}" class="mono" style="font-size:11px;display:flex;gap:6px;flex-wrap:wrap;text-transform:uppercase;letter-spacing:.1em">
+            <button onclick="filterPosts('${m.id}','all',this)" class="pill" style="cursor:pointer;border:1px solid var(--orange);background:var(--orange);color:#fff">All · ${posts.length}</button>
+            <button onclick="filterPosts('${m.id}','deal',this)" class="pill" style="cursor:pointer">Deal · ${posts.filter(p=>p.kind==='deal').length}</button>
+            <button onclick="filterPosts('${m.id}','construction',this)" class="pill" style="cursor:pointer">Construction · ${posts.filter(p=>p.kind==='construction').length}</button>
+            <button onclick="filterPosts('${m.id}','speaking',this)" class="pill" style="cursor:pointer">Speaking · ${posts.filter(p=>p.kind==='speaking').length}</button>
+            <button onclick="filterPosts('${m.id}','bulletin',this)" class="pill" style="cursor:pointer">Bulletin · ${posts.filter(p=>p.kind==='bulletin').length}</button>
+          </div>
+        </div>
+        <div id="posts-list-${m.id}" style="display:grid;grid-template-columns:repeat(2,1fr);gap:18px">
+          ${posts.map(p=>postCard(p,m)).join('')}
         </div>
       </div>
-    </section>`:''}`;
+    </section>`;
 }
+
 
 function renderEvents(){
   const list=[...EVENTS].sort((a,b)=>a.date.localeCompare(b.date));
@@ -1000,4 +1103,3 @@ go(state.user?'dashboard':'landing');
 
 </body>
 </html>
-                                                                                                       
