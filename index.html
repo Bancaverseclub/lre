@@ -230,6 +230,142 @@
   .section-light .pill{background:rgba(229,86,43,.1)}
 
   .badge-founding{display:inline-flex;align-items:center;gap:6px;font-family:'Inconsolata',monospace;font-size:11px;color:var(--ink);background:var(--orange);padding:4px 10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700}
+
+  /* ============== MOBILE RESPONSIVENESS PATCH ============== */
+  html, body { overflow-x: hidden; max-width: 100%; }
+  *, *::before, *::after { max-width: 100%; }
+  img, video { max-width: 100%; height: auto; }
+
+  /* Fluid headings (apply at all sizes — clamp handles min/max) */
+  .hero h1 { font-size: clamp(2.5rem, 11vw, 6rem) !important; line-height: 1 !important; word-break: break-word; }
+  .page-hero h1 { font-size: clamp(2rem, 9vw, 5rem) !important; line-height: 1 !important; word-break: break-word; }
+  .stat-num { font-size: clamp(2.25rem, 12vw, 5.5rem) !important; line-height: .95 !important; word-break: break-word; }
+  .heading-block h2 { font-size: clamp(1.75rem, 7vw, 4rem) !important; line-height: 1.05 !important; }
+  .h-tight { font-size: clamp(1.5rem, 5.5vw, 2.625rem) !important; }
+  .lockup .l1 { font-size: clamp(15px, 4.2vw, 22px); }
+  .brand-sub { font-size: clamp(9px, 2.5vw, 11px); }
+
+  /* Hide scrollbars utility */
+  .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+
+  /* MOBILE: <= 780px — convert all grid layouts into snap sliders */
+  @media (max-width: 780px) {
+    .container { padding: 0 16px !important; }
+    .py-24 { padding-top: 56px !important; padding-bottom: 40px !important; }
+    .py-16 { padding-top: 40px !important; padding-bottom: 40px !important; }
+    .py-12 { padding-top: 28px !important; padding-bottom: 28px !important; }
+    .section { padding: 64px 0 !important; }
+
+    /* Nav: smaller links + tighter gap so they don't wrap to 2 rows */
+    header.nav .inner { height: 56px; }
+    nav.links { gap: 14px !important; }
+    nav.links a, nav.links button { font-size: 11px !important; letter-spacing: .08em !important; }
+
+    /* Hero text wrap */
+    .hero p, .page-hero p { font-size: 15px !important; }
+    .hero .container { padding-top: 100px !important; padding-bottom: 40px !important; }
+    .hero-grid { gap: 22px !important; grid-template-columns: 1fr !important; }
+    .stats-row { margin-top: 32px !important; }
+
+    /* Slider behavior for grids */
+    .grid, .stats-row, .feature-grid, .gallery-grid, .team-grid, .benefits-grid,
+    [style*="grid-template-columns:repeat(2"], [style*="grid-template-columns:repeat(3"], [style*="grid-template-columns:repeat(4"] {
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      grid-template-columns: none !important;
+      overflow-x: auto !important;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      gap: 12px !important;
+      padding: 4px 16px 12px !important;
+      margin: 0 -16px !important;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .grid::-webkit-scrollbar, .stats-row::-webkit-scrollbar, .feature-grid::-webkit-scrollbar,
+    .gallery-grid::-webkit-scrollbar, .team-grid::-webkit-scrollbar, .benefits-grid::-webkit-scrollbar,
+    [style*="grid-template-columns:repeat(2"]::-webkit-scrollbar,
+    [style*="grid-template-columns:repeat(3"]::-webkit-scrollbar,
+    [style*="grid-template-columns:repeat(4"]::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; }
+
+    /* Each slide */
+    .grid > *, .stats-row > *, .feature-grid > *, .gallery-grid > *, .team-grid > *, .benefits-grid > *,
+    [style*="grid-template-columns:repeat(2"] > *, [style*="grid-template-columns:repeat(3"] > *, [style*="grid-template-columns:repeat(4"] > * {
+      flex: 0 0 80% !important;
+      max-width: 80% !important;
+      scroll-snap-align: start;
+      min-width: 0;
+    }
+    .stats-row > * { flex-basis: 60% !important; max-width: 60% !important; }
+    .team-grid > * { flex-basis: 70% !important; max-width: 70% !important; }
+    .feature-grid > * { flex-basis: 88% !important; max-width: 88% !important; }
+    .gallery-grid > * { flex-basis: 78% !important; max-width: 78% !important; }
+
+    /* Card text resizing inside slides */
+    .feature-card .label { font-size: 22px !important; }
+    .gallery-card .label { font-size: 14px !important; }
+    .team-item .name { font-size: 17px !important; }
+    .stat-label { font-size: 12px !important; }
+    .benefit h3 { font-size: 18px !important; }
+    .benefit p { font-size: 13px !important; }
+
+    /* Spotlight (member profile) */
+    .spotlight-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+    .spotlight-portrait { max-width: 240px; margin: 0 auto; }
+    .avatar-lg { width: 110px !important; height: 110px !important; }
+
+    /* Tabs row */
+    .tabs-row { grid-template-columns: 1fr !important; gap: 28px !important; }
+
+    /* Project / event detail right-column stack */
+    .event-stats { grid-template-columns: 1fr !important; gap: 18px !important; padding: 18px 0 !important; }
+    .event-stat .value { font-size: 20px !important; }
+
+    /* Footer: stack */
+    .footer-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+    .footer-grid h4 { font-size: 28px !important; }
+    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+
+    /* Buttons full width on mobile in hero */
+    .hero .btn, .page-hero .btn { font-size: 12px; padding: 10px 16px; }
+
+    /* Login form layout */
+    #page-login .container > div { max-width: 100% !important; }
+    #page-login input { font-size: 16px !important; } /* prevents iOS zoom */
+
+    /* Reveal block */
+    .reveal-block { padding: 18px !important; }
+
+    /* Member profile feed: filter pills smaller */
+    [id^="filter-pills-"] button { font-size: 9.5px !important; padding: 4px 8px !important; }
+
+    /* Hide secondary text where needed */
+    .brand-sub { display: inline-block; }
+
+    /* Terminal block on landing — shrink */
+    .terminal { font-size: 11px !important; padding: 14px !important; }
+  }
+
+  /* Very small screens (≤420px) */
+  @media (max-width: 420px) {
+    .grid > *, [style*="grid-template-columns"] > * { flex-basis: 86% !important; max-width: 86% !important; }
+    .stats-row > * { flex-basis: 70% !important; max-width: 70% !important; }
+    .feature-card .label { font-size: 19px !important; }
+    .stat .value { font-size: 22px !important; }
+    nav.links { gap: 10px !important; }
+    nav.links a, nav.links button { font-size: 10px !important; }
+  }
+
+  /* Hint that there's more content (subtle right-edge fade on mobile sliders) */
+  @media (max-width: 780px) {
+    .grid, .stats-row, .feature-grid, .gallery-grid, .team-grid, .benefits-grid,
+    [style*="grid-template-columns:repeat(2"], [style*="grid-template-columns:repeat(3"], [style*="grid-template-columns:repeat(4"] {
+      mask-image: linear-gradient(to right, black 90%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, black 90%, transparent 100%);
+    }
+  }
+
 </style>
 </head>
 <body>
