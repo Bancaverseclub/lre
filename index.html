@@ -366,6 +366,46 @@
     }
   }
 
+
+  /* ============== MOBILE PATCH 2 ============== */
+  /* Remove confusing right-edge mask (was hiding content unnecessarily) */
+  @media (max-width: 780px) {
+    .grid, .stats-row, .feature-grid, .gallery-grid, .team-grid, .benefits-grid,
+    [style*="grid-template-columns:repeat(2"], [style*="grid-template-columns:repeat(3"], [style*="grid-template-columns:repeat(4"] {
+      mask-image: none !important;
+      -webkit-mask-image: none !important;
+    }
+    /* Subtle visible scrollbar replaced with edge dot indicator (works without mask) */
+  }
+
+  /* Buttons: never hide text, always wrap content, force white on btn-orange */
+  .btn { overflow: visible !important; white-space: nowrap; }
+  .btn-orange { color: #fff !important; min-width: 0; }
+  .btn-orange .arrow { flex-shrink: 0; }
+  /* Footer button explicit alignment */
+  footer .btn-orange { display: inline-flex !important; align-items: center; gap: 12px; padding: 14px 22px; }
+  footer .btn-orange::before, footer .btn-orange::after { content: none !important; }
+
+  @media (max-width: 780px) {
+    /* Dark benefits section heading — make it actually fit */
+    .heading-block h2 { font-size: clamp(1.5rem, 6.2vw, 3rem) !important; line-height: 1.1 !important; max-width: 100% !important; word-break: normal !important; overflow-wrap: break-word; }
+    .heading-block { max-width: 100% !important; }
+    /* Specifically constrain the dark "Our members are" heading */
+    .section-dark .heading-block h2 { font-size: clamp(1.4rem, 5.8vw, 2.5rem) !important; }
+    /* Footer button shouldn't be full-width, prevent text hidden */
+    footer .btn { font-size: 12px !important; padding: 12px 18px !important; }
+    footer h4 { font-size: clamp(1.5rem, 6vw, 2.5rem) !important; }
+
+    /* Posts feed cards (member profile) */
+    [id^="posts-list-"] > * { flex-basis: 86% !important; max-width: 86% !important; }
+  }
+
+  /* Post card cover image styles */
+  .post-cover { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+  .post-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: all .18s ease; }
+  .post-card:hover { transform: translateY(-1px); border-color: var(--ink); }
+  .post-card .post-body { padding: 20px; }
+
 </style>
 </head>
 <body>
@@ -622,50 +662,50 @@ const MEMBERS = [
 // ============== MEMBER POSTS — deals, construction, speaking, bulletins ==============
 const POSTS = [
   // Carlos
-  {id:'p_c1',memberId:'mem_carlos',kind:'deal',title:'Bridge debt term sheet template',date:'2026-04-22',body:'Sharing the standardized 12-month bridge term sheet Bancaverse uses for sub-$5M deals. Members can fork and use.',cta:'Request copy'},
-  {id:'p_c2',memberId:'mem_carlos',kind:'speaking',title:'Keynote · PropTech Austin Summit',date:'2026-09-10',meta:'Capital Factory · 6pm',body:'"Capital is local: how Austin Latino-led brokerages are reshaping the borrower-lender relationship." 30 min keynote + Q&A.',cta:'RSVP at proptechatx.com'},
-  {id:'p_c3',memberId:'mem_carlos',kind:'construction',title:'Bancaverse HQ buildout · 5,000sf · Mueller',date:'2026-Q4',meta:'Looking for: GC bids',body:'Open shell to office buildout. Permits in. Need a GC familiar with mid-market commercial finishes. Award by Aug 1.',cta:'Bid the project'},
-  {id:'p_c4',memberId:'mem_carlos',kind:'bulletin',title:'Looking for: industrial broker referrals · Round Rock',date:'2026-05-02',body:'Have a borrower hunting 50-80k sf flex space along the 35/79 split. Refer your top broker — finder fee paid on close.',cta:'Make an intro'},
+  {id:'p_c1',memberId:'mem_carlos',kind:'deal',title:'Bridge debt term sheet template',date:'2026-04-22',body:'Sharing the standardized 12-month bridge term sheet Bancaverse uses for sub-$5M deals. Members can fork and use.',cta:'Request copy',cover:'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&q=80&auto=format&fit=crop'},
+  {id:'p_c2',memberId:'mem_carlos',kind:'speaking',title:'Keynote · PropTech Austin Summit',date:'2026-09-10',meta:'Capital Factory · 6pm',body:'"Capital is local: how Austin Latino-led brokerages are reshaping the borrower-lender relationship." 30 min keynote + Q&A.',cta:'RSVP at proptechatx.com',cover:'https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1200&q=80&auto=format&fit=crop'},
+  {id:'p_c3',memberId:'mem_carlos',kind:'construction',title:'Bancaverse HQ buildout · 5,000sf · Mueller',date:'2026-Q4',meta:'Looking for: GC bids',body:'Open shell to office buildout. Permits in. Need a GC familiar with mid-market commercial finishes. Award by Aug 1.',cta:'Bid the project',cover:'https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=1200&q=80&auto=format&fit=crop'},
+  {id:'p_c4',memberId:'mem_carlos',kind:'bulletin',title:'Looking for: industrial broker referrals · Round Rock',date:'2026-05-02',body:'Have a borrower hunting 50-80k sf flex space along the 35/79 split. Refer your top broker — finder fee paid on close.',cta:'Make an intro',cover:'https://images.unsplash.com/photo-1517093157656-b9eccef91cb1?w=1200&q=80&auto=format&fit=crop'},
   // Sofia
-  {id:'p_s1',memberId:'mem_sofia',kind:'deal',title:'East Austin 24-Unit Value-Add',date:'2026-05-01',meta:'$2.4M LP equity · 16-18% IRR',body:'Class C garden, 1980s vintage off East 12th. $98/sf basis, sub-market rents support $1,650/unit post-reno.',cta:'See deal page'},
-  {id:'p_s2',memberId:'mem_sofia',kind:'construction',title:'Springdale Warehouse → 12 lofts',date:'2026-Q3',meta:'Adaptive reuse',body:'1953 warehouse on Springdale becoming 12 industrial lofts. Open to a JV equity partner at 75/25.',cta:'JV inquiry'},
-  {id:'p_s3',memberId:'mem_sofia',kind:'speaking',title:'ULI Austin · Workforce Housing Panel',date:'2026-06-25',meta:'AT&T Conference Center',body:'Panelist on the "Beyond LIHTC" track. How non-tax-credit operators deliver workforce housing in price-pressured Austin.',cta:'Get tickets'},
-  {id:'p_s4',memberId:'mem_sofia',kind:'bulletin',title:'Hiring: Asset Manager · Casa Capital',date:'2026-04-30',meta:'Full-time · East Austin',body:'8-property portfolio (~$120M AUM). 5+ years multifamily ops. Spanish required.',cta:'Apply / refer'},
+  {id:'p_s1',memberId:'mem_sofia',kind:'deal',title:'East Austin 24-Unit Value-Add',date:'2026-05-01',meta:'$2.4M LP equity · 16-18% IRR',body:'Class C garden, 1980s vintage off East 12th. $98/sf basis, sub-market rents support $1,650/unit post-reno.',cta:'See deal page',cover:'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&q=80&auto=format&fit=crop'},
+  {id:'p_s2',memberId:'mem_sofia',kind:'construction',title:'Springdale Warehouse → 12 lofts',date:'2026-Q3',meta:'Adaptive reuse',body:'1953 warehouse on Springdale becoming 12 industrial lofts. Open to a JV equity partner at 75/25.',cta:'JV inquiry',cover:'https://images.unsplash.com/photo-1573164574572-cb89e39749b4?w=1200&q=80&auto=format&fit=crop'},
+  {id:'p_s3',memberId:'mem_sofia',kind:'speaking',title:'ULI Austin · Workforce Housing Panel',date:'2026-06-25',meta:'AT&T Conference Center',body:'Panelist on the "Beyond LIHTC" track. How non-tax-credit operators deliver workforce housing in price-pressured Austin.',cta:'Get tickets',cover:'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80&auto=format&fit=crop'},
+  {id:'p_s4',memberId:'mem_sofia',kind:'bulletin',title:'Hiring: Asset Manager · Casa Capital',date:'2026-04-30',meta:'Full-time · East Austin',body:'8-property portfolio (~$120M AUM). 5+ years multifamily ops. Spanish required.',cta:'Apply / refer',cover:'https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=1200&q=80&auto=format&fit=crop'},
   // Diego
-  {id:'p_d1',memberId:'mem_diego',kind:'deal',title:'40-acre Dripping Springs land play',date:'2026-04-12',meta:'$5.8M equity',body:'40 acres, US-290 frontage. Pre-entitlement land bank with builder LOIs from DRH and Lennar.',cta:'See deal page'},
-  {id:'p_d2',memberId:'mem_diego',kind:'deal',title:'45,000 sf flex · Cedar Park · OFF-MARKET',date:'2026-05-04',meta:'$9.2M · 6.4% cap',body:'Single-tenant flex with national credit on a 6-yr NNN. Sharing only with LRE before listing.',cta:'NDA + OM'},
-  {id:'p_d3',memberId:'mem_diego',kind:'speaking',title:'Podcast guest · ATX Capital Stack',date:'2026-07-08',meta:'Podcast · 45 min',body:'Talking industrial absorption, Samsung-effect on the NW corridor, and why land beats listings in 2026.',cta:'Listen on launch'},
-  {id:'p_d4',memberId:'mem_diego',kind:'bulletin',title:'Recommend: title attorney for industrial',date:'2026-04-28',body:'Looking for a title attorney who actually understands TX industrial easements. Member referrals only.',cta:'DM Diego'},
+  {id:'p_d1',memberId:'mem_diego',kind:'deal',title:'40-acre Dripping Springs land play',date:'2026-04-12',meta:'$5.8M equity',body:'40 acres, US-290 frontage. Pre-entitlement land bank with builder LOIs from DRH and Lennar.',cta:'See deal page',cover:'https://images.unsplash.com/photo-1554469384-e58fac16e23a?w=1200&q=80&auto=format&fit=crop'},
+  {id:'p_d2',memberId:'mem_diego',kind:'deal',title:'45,000 sf flex · Cedar Park · OFF-MARKET',date:'2026-05-04',meta:'$9.2M · 6.4% cap',body:'Single-tenant flex with national credit on a 6-yr NNN. Sharing only with LRE before listing.',cta:'NDA + OM',cover:'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80&auto=format&fit=crop'},
+  {id:'p_d3',memberId:'mem_diego',kind:'speaking',title:'Podcast guest · ATX Capital Stack',date:'2026-07-08',meta:'Podcast · 45 min',body:'Talking industrial absorption, Samsung-effect on the NW corridor, and why land beats listings in 2026.',cta:'Listen on launch',cover:'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&q=80&auto=format&fit=crop'},
+  {id:'p_d4',memberId:'mem_diego',kind:'bulletin',title:'Recommend: title attorney for industrial',date:'2026-04-28',body:'Looking for a title attorney who actually understands TX industrial easements. Member referrals only.',cta:'DM Diego',cover:'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=1200&q=80&auto=format&fit=crop'},
   // Lucia
-  {id:'p_l1',memberId:'mem_lucia',kind:'deal',title:'Co-investing $2M into a member-led mixed-use',date:'2026-05-05',meta:'1 LP spot left',body:'Backing one of our operators on a Mueller play. One slot still open at $250K min. Members only.',cta:'Express interest'},
-  {id:'p_l2',memberId:'mem_lucia',kind:'speaking',title:'Family Office Roundtable · Austin Investors Forum',date:'2026-08-19',meta:'Driskill Hotel · invite-only',body:'Moderating "Latino capital, Latino sponsors" — private 30-person roundtable. LRE has 5 reserved seats.',cta:'Reserve seat'},
-  {id:'p_l3',memberId:'mem_lucia',kind:'bulletin',title:'Looking for: tax counsel · 1031 exchange',date:'2026-04-22',body:'Need a CPA + attorney pair experienced with reverse 1031s. Family office volume.',cta:'Refer your team'},
-  {id:'p_l4',memberId:'mem_lucia',kind:'bulletin',title:'Open: $1M-$3M equity allocations Q3',date:'2026-04-15',body:'Allocating Q3 across 2-3 GP-led mixed-use or hospitality deals. 8% pref + promote.',cta:'Pitch a deal'},
+  {id:'p_l1',memberId:'mem_lucia',kind:'deal',title:'Co-investing $2M into a member-led mixed-use',date:'2026-05-05',meta:'1 LP spot left',body:'Backing one of our operators on a Mueller play. One slot still open at $250K min. Members only.',cta:'Express interest',cover:'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200&q=80&auto=format&fit=crop'},
+  {id:'p_l2',memberId:'mem_lucia',kind:'speaking',title:'Family Office Roundtable · Austin Investors Forum',date:'2026-08-19',meta:'Driskill Hotel · invite-only',body:'Moderating "Latino capital, Latino sponsors" — private 30-person roundtable. LRE has 5 reserved seats.',cta:'Reserve seat',cover:'https://images.unsplash.com/photo-1506157786151-b8491531f063?w=1200&q=80&auto=format&fit=crop'},
+  {id:'p_l3',memberId:'mem_lucia',kind:'bulletin',title:'Looking for: tax counsel · 1031 exchange',date:'2026-04-22',body:'Need a CPA + attorney pair experienced with reverse 1031s. Family office volume.',cta:'Refer your team',cover:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80&auto=format&fit=crop'},
+  {id:'p_l4',memberId:'mem_lucia',kind:'bulletin',title:'Open: $1M-$3M equity allocations Q3',date:'2026-04-15',body:'Allocating Q3 across 2-3 GP-led mixed-use or hospitality deals. 8% pref + promote.',cta:'Pitch a deal',cover:'https://images.unsplash.com/photo-1517093157656-b9eccef91cb1?w=1200&q=80&auto=format&fit=crop'},
   // Mateo
-  {id:'p_m1',memberId:'mem_mateo',kind:'deal',title:'Mueller 60-unit Mixed-Use · Construction Debt',date:'2026-05-03',meta:'$12M debt + GP-stack',body:'Fully entitled 60-unit residential over 8,000sf retail. Site under contract at $4.2M. TDC ~$22M.',cta:'See deal page'},
-  {id:'p_m2',memberId:'mem_mateo',kind:'construction',title:'Springdale Warehouse Conversion · ground broken',date:'2026-04-18',meta:'Phase 1 · 12 units',body:'Phase 1 underway. Looking for a TX-licensed millwork shop for the lobby and unit interiors.',cta:'Submit shop'},
-  {id:'p_m3',memberId:'mem_mateo',kind:'speaking',title:'AIA Austin · Adaptive Reuse Pro Forma',date:'2026-09-22',meta:'Public · CEU',body:'Hour-long workshop. How to underwrite a warehouse-to-loft conversion that actually pencils.',cta:'Register'},
-  {id:'p_m4',memberId:'mem_mateo',kind:'bulletin',title:'Looking for: capital markets associate',date:'2026-04-29',body:'Hiring an associate to run debt placement for our pipeline. 2-4 yrs RE finance, Spanish a plus.',cta:'Apply'},
+  {id:'p_m1',memberId:'mem_mateo',kind:'deal',title:'Mueller 60-unit Mixed-Use · Construction Debt',date:'2026-05-03',meta:'$12M debt + GP-stack',body:'Fully entitled 60-unit residential over 8,000sf retail. Site under contract at $4.2M. TDC ~$22M.',cta:'See deal page',cover:'https://images.unsplash.com/photo-1611605698335-8b1569810432?w=1200&q=80&auto=format&fit=crop'},
+  {id:'p_m2',memberId:'mem_mateo',kind:'construction',title:'Springdale Warehouse Conversion · ground broken',date:'2026-04-18',meta:'Phase 1 · 12 units',body:'Phase 1 underway. Looking for a TX-licensed millwork shop for the lobby and unit interiors.',cta:'Submit shop',cover:'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=1200&q=80&auto=format&fit=crop'},
+  {id:'p_m3',memberId:'mem_mateo',kind:'speaking',title:'AIA Austin · Adaptive Reuse Pro Forma',date:'2026-09-22',meta:'Public · CEU',body:'Hour-long workshop. How to underwrite a warehouse-to-loft conversion that actually pencils.',cta:'Register',cover:'https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1200&q=80&auto=format&fit=crop'},
+  {id:'p_m4',memberId:'mem_mateo',kind:'bulletin',title:'Looking for: capital markets associate',date:'2026-04-29',body:'Hiring an associate to run debt placement for our pipeline. 2-4 yrs RE finance, Spanish a plus.',cta:'Apply',cover:'https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=1200&q=80&auto=format&fit=crop'},
   // Ana
-  {id:'p_a1',memberId:'mem_ana',kind:'deal',title:'Open: $500K-$10M bridge debt allocations',date:'2026-05-06',meta:'9-12% rate · 6-18 mo',body:'Active capital this quarter. SFR portfolios, multi, mixed-use, light value-add. Travis/Williamson/Hays only.',cta:'Submit a deal'},
-  {id:'p_a2',memberId:'mem_ana',kind:'speaking',title:'Texas REIA · Bridge Lending 101',date:'2026-07-15',meta:'Austin · members + guests',body:'How to package a bridge request that actually gets funded. Live underwriting on 2 borrower scenarios.',cta:'RSVP'},
-  {id:'p_a3',memberId:'mem_ana',kind:'bulletin',title:'Recommend: title company in Hays County',date:'2026-04-26',body:'Need a title shop that closes fast in Hays. Two recent escrows took 22 days too long.',cta:'DM Ana'},
-  {id:'p_a4',memberId:'mem_ana',kind:'bulletin',title:'Lender capacity update · Q2',date:'2026-04-10',body:'Currently $14M deployed of $20M cap. Pacing for full deployment by July. Hold quality high — no exceptions.',cta:'Discuss a deal'},
+  {id:'p_a1',memberId:'mem_ana',kind:'deal',title:'Open: $500K-$10M bridge debt allocations',date:'2026-05-06',meta:'9-12% rate · 6-18 mo',body:'Active capital this quarter. SFR portfolios, multi, mixed-use, light value-add. Travis/Williamson/Hays only.',cta:'Submit a deal',cover:'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&q=80&auto=format&fit=crop'},
+  {id:'p_a2',memberId:'mem_ana',kind:'speaking',title:'Texas REIA · Bridge Lending 101',date:'2026-07-15',meta:'Austin · members + guests',body:'How to package a bridge request that actually gets funded. Live underwriting on 2 borrower scenarios.',cta:'RSVP',cover:'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80&auto=format&fit=crop'},
+  {id:'p_a3',memberId:'mem_ana',kind:'bulletin',title:'Recommend: title company in Hays County',date:'2026-04-26',body:'Need a title shop that closes fast in Hays. Two recent escrows took 22 days too long.',cta:'DM Ana',cover:'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=1200&q=80&auto=format&fit=crop'},
+  {id:'p_a4',memberId:'mem_ana',kind:'bulletin',title:'Lender capacity update · Q2',date:'2026-04-10',body:'Currently $14M deployed of $20M cap. Pacing for full deployment by July. Hold quality high — no exceptions.',cta:'Discuss a deal',cover:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80&auto=format&fit=crop'},
   // Javier
-  {id:'p_j1',memberId:'mem_javier',kind:'deal',title:'Domain office sublease · 8,400 sf',date:'2026-05-02',meta:'Furnished · $32 NNN',body:'Tech tenant downsizing. Plug-and-play sublease, 36 months remaining. Below market rent.',cta:'Tour the space'},
-  {id:'p_j2',memberId:'mem_javier',kind:'deal',title:'Downtown retail at 2nd & Brazos · $5.4M',date:'2026-04-30',meta:'Stabilized · 6.8% cap',body:'Two-tenant retail box. F&B + service. Long-WALT, NNN. Owner relocating capital.',cta:'OM available'},
-  {id:'p_j3',memberId:'mem_javier',kind:'speaking',title:'CCIM Austin · The Domain in 2027',date:'2026-10-04',meta:'Domain Northside',body:'30-min market read on Domain office, retail, and the new mixed-use deliveries.',cta:'Register'},
-  {id:'p_j4',memberId:'mem_javier',kind:'bulletin',title:'Looking for: Spanish-speaking property manager',date:'2026-04-21',body:'Have a 22,000 sf retail asset that needs PM. Spanish required for tenant base.',cta:'Refer one'},
+  {id:'p_j1',memberId:'mem_javier',kind:'deal',title:'Domain office sublease · 8,400 sf',date:'2026-05-02',meta:'Furnished · $32 NNN',body:'Tech tenant downsizing. Plug-and-play sublease, 36 months remaining. Below market rent.',cta:'Tour the space',cover:'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&q=80&auto=format&fit=crop'},
+  {id:'p_j2',memberId:'mem_javier',kind:'deal',title:'Downtown retail at 2nd & Brazos · $5.4M',date:'2026-04-30',meta:'Stabilized · 6.8% cap',body:'Two-tenant retail box. F&B + service. Long-WALT, NNN. Owner relocating capital.',cta:'OM available',cover:'https://images.unsplash.com/photo-1554469384-e58fac16e23a?w=1200&q=80&auto=format&fit=crop'},
+  {id:'p_j3',memberId:'mem_javier',kind:'speaking',title:'CCIM Austin · The Domain in 2027',date:'2026-10-04',meta:'Domain Northside',body:'30-min market read on Domain office, retail, and the new mixed-use deliveries.',cta:'Register',cover:'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&q=80&auto=format&fit=crop'},
+  {id:'p_j4',memberId:'mem_javier',kind:'bulletin',title:'Looking for: Spanish-speaking property manager',date:'2026-04-21',body:'Have a 22,000 sf retail asset that needs PM. Spanish required for tenant base.',cta:'Refer one',cover:'https://images.unsplash.com/photo-1517093157656-b9eccef91cb1?w=1200&q=80&auto=format&fit=crop'},
   // Isabella
-  {id:'p_i1',memberId:'mem_isabella',kind:'deal',title:'South Congress 38-key Hotel · Refi',date:'2026-05-04',meta:'$8.5M senior debt',body:'Stabilized boutique. Trailing $1.2M NOI. Replacing a maturing $7M loan + $1.5M cash-out.',cta:'See deal page'},
-  {id:'p_i2',memberId:'mem_isabella',kind:'construction',title:'East 6th Hotel #5 · permits filed',date:'2026-Q3 break ground',meta:'24-key boutique',body:'Adaptive reuse on East 6th. Permits filed last week. Pre-construction kickoff with GC mid-June.',cta:'Tour the block'},
-  {id:'p_i3',memberId:'mem_isabella',kind:'speaking',title:'SXSW Hospitality Track · 2027',date:'2027-03-15',meta:'Austin Convention Center',body:'Confirmed for SXSW hospitality track. Talk: "Hyper-local boutique vs. brand."',cta:'Save the date'},
-  {id:'p_i4',memberId:'mem_isabella',kind:'bulletin',title:'Hiring: GM for new East 6th opening',date:'2026-04-25',body:'Opening GM for our 5th property. Boutique hotel ops experience required. Bilingual a strong plus.',cta:'Refer / apply'},
+  {id:'p_i1',memberId:'mem_isabella',kind:'deal',title:'South Congress 38-key Hotel · Refi',date:'2026-05-04',meta:'$8.5M senior debt',body:'Stabilized boutique. Trailing $1.2M NOI. Replacing a maturing $7M loan + $1.5M cash-out.',cta:'See deal page',cover:'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80&auto=format&fit=crop'},
+  {id:'p_i2',memberId:'mem_isabella',kind:'construction',title:'East 6th Hotel #5 · permits filed',date:'2026-Q3 break ground',meta:'24-key boutique',body:'Adaptive reuse on East 6th. Permits filed last week. Pre-construction kickoff with GC mid-June.',cta:'Tour the block',cover:'https://images.unsplash.com/photo-1611605698335-8b1569810432?w=1200&q=80&auto=format&fit=crop'},
+  {id:'p_i3',memberId:'mem_isabella',kind:'speaking',title:'SXSW Hospitality Track · 2027',date:'2027-03-15',meta:'Austin Convention Center',body:'Confirmed for SXSW hospitality track. Talk: "Hyper-local boutique vs. brand."',cta:'Save the date',cover:'https://images.unsplash.com/photo-1506157786151-b8491531f063?w=1200&q=80&auto=format&fit=crop'},
+  {id:'p_i4',memberId:'mem_isabella',kind:'bulletin',title:'Hiring: GM for new East 6th opening',date:'2026-04-25',body:'Opening GM for our 5th property. Boutique hotel ops experience required. Bilingual a strong plus.',cta:'Refer / apply',cover:'https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=1200&q=80&auto=format&fit=crop'},
   // Rafael
-  {id:'p_r1',memberId:'mem_rafael',kind:'speaking',title:'AIA Austin · Designing for el círculo',date:'2026-08-12',meta:'AIA HQ · public',body:"Talk on how Austin's Latino-led developments are shaping a new Texas vernacular.",cta:'RSVP'},
-  {id:'p_r2',memberId:'mem_rafael',kind:'construction',title:'Mueller mixed-use · design lead',date:'2026-Q4 vertical',meta:'60 units + 8,000sf retail',body:"Lead architect on Mateo's Mueller project. Design dev complete. CDs in hand.",cta:'View renderings'},
-  {id:'p_r3',memberId:'mem_rafael',kind:'bulletin',title:'Recommend: structural engineer · adaptive reuse',date:'2026-05-01',body:'Need a structural for two warehouse-to-loft pre-cons. Must have TX seal + reuse experience.',cta:'Refer one'},
-  {id:'p_r4',memberId:'mem_rafael',kind:'bulletin',title:'Available: pro-bono design hours',date:'2026-04-15',body:'Reserving 20 pro-bono hours/quarter for member-referred community projects.',cta:'Apply'}
+  {id:'p_r1',memberId:'mem_rafael',kind:'speaking',title:'AIA Austin · Designing for el círculo',date:'2026-08-12',meta:'AIA HQ · public',body:"Talk on how Austin's Latino-led developments are shaping a new Texas vernacular.",cta:'RSVP',cover:'https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1200&q=80&auto=format&fit=crop'},
+  {id:'p_r2',memberId:'mem_rafael',kind:'construction',title:'Mueller mixed-use · design lead',date:'2026-Q4 vertical',meta:'60 units + 8,000sf retail',body:"Lead architect on Mateo's Mueller project. Design dev complete. CDs in hand.",cta:'View renderings',cover:'https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=1200&q=80&auto=format&fit=crop'},
+  {id:'p_r3',memberId:'mem_rafael',kind:'bulletin',title:'Recommend: structural engineer · adaptive reuse',date:'2026-05-01',body:'Need a structural for two warehouse-to-loft pre-cons. Must have TX seal + reuse experience.',cta:'Refer one',cover:'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=1200&q=80&auto=format&fit=crop'},
+  {id:'p_r4',memberId:'mem_rafael',kind:'bulletin',title:'Available: pro-bono design hours',date:'2026-04-15',body:'Reserving 20 pro-bono hours/quarter for member-referred community projects.',cta:'Apply',cover:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80&auto=format&fit=crop'}
 ];
 
 const KIND_META={
@@ -677,8 +717,9 @@ const KIND_META={
 function postCard(p,m){
   const k=KIND_META[p.kind]||KIND_META.bulletin;
   return `
-    <div data-kind="${p.kind}" class="dash-card" style="cursor:default">
-      <div class="body" style="padding:22px">
+    <div data-kind="${p.kind}" class="post-card">
+      ${p.cover?`<img src="${p.cover}" alt="" class="post-cover" loading="lazy"/>`:''}
+      <div class="post-body">
         <div style="display:flex;justify-content:space-between;align-items:start;gap:12px">
           <div class="mono" style="font-size:10px;letter-spacing:.15em;color:${k.color};background:${k.bg};padding:4px 9px;text-transform:uppercase;font-weight:600">${k.label}</div>
           <div class="mono" style="font-size:11px;color:rgba(15,24,34,.5)">${p.date||''}</div>
@@ -1006,6 +1047,35 @@ function renderMember(id){
         </div>
       </div>
     </section>
+    
+    ${projects.length?`
+    <section class="section-light" style="padding:60px 0;background:var(--cream-2)">
+      <div class="container">
+        <div style="display:flex;justify-content:space-between;align-items:end;margin-bottom:24px;flex-wrap:wrap;gap:14px">
+          <div>
+            <span class="eyebrow">// Open from ${m.name.split(' ')[0]}</span>
+            <h2 class="h-tight" style="font-size:42px;color:var(--ink);margin-top:8px">Deal flow</h2>
+            <p class="muted" style="margin-top:6px">${projects.length} live ${projects.length===1?'deal':'deals'} on the board</p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(${Math.min(projects.length,2)},1fr);gap:18px">
+          ${projects.map(p=>{
+            const looking=p.lookingFor.map(l=>'<span class="pill pill-accent">'+l+'</span>').join('');
+            return `
+            <div class="dash-card" onclick="go('project','${p.id}')">
+              <div class="img"><img src="${p.cover}" alt="" loading="lazy"></div>
+              <div class="body">
+                <div class="meta">${p.projectType} · ${p.propertyType} · ${p.location}</div>
+                <h3 style="font-size:22px;margin-top:8px">${p.name}</h3>
+                <p style="margin-top:10px">${p.pitchShort}</p>
+                <div style="margin-top:14px">${looking}</div>
+                ${p.capitalNeeded?`<div class="mono" style="margin-top:14px;font-size:11px;color:var(--orange);text-transform:uppercase;letter-spacing:.1em">${'$'+p.capitalNeeded.toLocaleString()} sought · ${p.targetReturns||''}</div>`:''}
+              </div>
+            </div>`;
+          }).join('')}
+        </div>
+      </div>
+    </section>`:''}
     <section class="section-light" style="padding:80px 0;background:var(--cream-2)">
       <div class="container">
         <div style="display:flex;justify-content:space-between;align-items:end;margin-bottom:32px;flex-wrap:wrap;gap:14px">
